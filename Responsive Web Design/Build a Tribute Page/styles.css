@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: 1px solid green;
+}
+
+main {
+  padding: 100px 200px;
+}
+
+.container {
+  background-color: #eee;
+}
+
+h1,
+h3,
+p {
+  text-align: center;
+}
+
+#img-dev {
+  text-align: center;
+}
