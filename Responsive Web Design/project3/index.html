@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build a Technical Documentation Page</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <header id="nav-header">CSS Selectors</header>
+      <div class="nav-links">
+        <a href="#Attribute_selectors" class="nav-link">Attribute selectors</a>
+        <a href="#Class_selectors" class="nav-link">Class selectors</a>
+        <a href="#ID_selectors" class="nav-link">ID selectors</a>
+        <a href="#Type_selectors" class="nav-link">Type selectors</a>
+        <a href="#Universal_selectors" class="nav-link">Universal selectors</a>
+      </div>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Attribute_selectors">
+        <header>Attribute selectors</header>
+        <p>The CSS attribute selector matches elements based on the presence or value of a given attribute.</p>
+        <code>
+          /* &lt;a> elements with a title attribute */<br />
+          a[title] {<br />
+          &nbsp;color: purple;<br />
+          }<br />
+          <br />
+          /* &lt;a&gt; elements with an href matching "https://example.org" */<br />
+          a[href="https://example.org"]<br />
+          {<br />
+          &nbsp;color: green;<br />
+          }<br />
+          <br />
+          /* &lt;a&gt; elements with an href containing "example" */<br />
+          a[href*="example"] {<br />
+          &nbsp;font-size: 2em;<br />
+          }<br />
+
+          /* &lt;a&gt; elements with an href ending ".org" */<br />
+          a[href$=".org"] {<br />
+          &nbsp;font-style: italic;<br />
+          }<br />
+          <br />
+          /* &lt;a&gt; elements whose class attribute contains the word "logo" */<br />
+          a[class~="logo"] {<br />
+          &nbsp;padding: 2px;<br />
+          }<br />
+        </code>
+        <h2>Syntax</h2>
+        <p><code>[attr]</code> Represents elements with an attribute name of attr.</p>
+        <p><code>[attr=value]</code> Represents elements with an attribute name of attr whose value is exactly value.</p>
+        <p><code>[attr~=value]</code> Represents elements with an attribute name of attr whose value is a whitespace-separated list of words, one of which is exactly value.</p>
+        <p>
+          <code>[attr|=value]</code> Represents elements with an attribute name of attr whose value can be exactly value or can begin with value immediately followed by a hyphen,
+          <code>-</code> (U+002D). It is often used for language subcode matches.
+        </p>
+        <p><code>[attr^=value]</code> Represents elements with an attribute name of attr whose value is prefixed (preceded) by value.</p>
+        <p><code>[attr$=value]</code> Represents elements with an attribute name of attr whose value is suffixed (followed) by value.</p>
+        <p><code>[attr*=value]</code> Represents elements with an attribute name of attr whose value contains at least one occurrence of value within the string.</p>
+      </section>
+      <section class="main-section" id="Class_selectors">
+        <header>Class selectors</header>
+        <p>The CSS class selector matches elements based on the contents of their class attribute.</p>
+        <code>
+          /* All elements with class="spacious" */<br />
+          .spacious {<br />
+          &nbsp;margin: 2em;<br />
+          }<br />
+          <br />
+          /* All &lt;li&gt; elements with class="spacious" */<br />
+          li.spacious {<br />
+          &nbsp;margin: 2em;<br />
+          }<br />
+          <br />
+          /* All &lt;li&gt; elements with a class list that includes both "spacious" and "elegant" */<br />
+          /* For example, class="elegant retro spacious" */<br />
+          li.spacious.elegant {<br />
+          &nbsp;margin: 2em;<br />
+          }
+        </code>
+        <h2>Syntax</h2>
+        <code>.class_name { style properties }</code>
+        <p>Note that this is equivalent to the following attribute selector:</p>
+        <code>[class~=class_name] { style properties }</code>
+        <h2>Examples</h2>
+        <h2>CSS</h2>
+        <code>
+          .red {<br />
+          color: #f33;<br />
+          }<br />
+          <br />
+          .yellow-bg {<br />
+          background: #ffa;<br />
+          }<br />
+          <br />
+          .fancy {<br />
+          font-weight: bold;<br />
+          text-shadow: 4px 4px 3px #77f;<br />
+          }
+        </code>
+        <h2>HTML</h2>
+        <code>
+          &lt;p class="red">This paragraph has red text.&lt;/p&gt;<br />
+          &lt;p class="red yellow-bg"><br />
+          &nbsp;This paragraph has red text and a yellow background.<br />
+          &lt;/p&gt;<br />
+          &lt;p class="red fancy"&gt;This paragraph has red text and "fancy" styling.&lt;/p&gt;<br />
+          &lt;p&gt;This is just a regular paragraph.&lt;/p&gt;
+        </code>
+      </section>
+      <section class="main-section" id="ID_selectors">
+        <header>ID selectors</header>
+        <p>
+          The CSS ID selector matches an element based on the value of the element's id attribute. In order for the element to be selected, its id attribute must match exactly the value given in the
+          selector.
+        </p>
+        <code>
+          /* The element with id="demo" */<br />
+          #demo {<br />
+          &nbsp;border: red 2px solid;<br />
+          }
+        </code>
+      </section>
+      <section class="main-section" id="Type_selectors">
+        <header>Type selectors</header>
+        <p>The CSS type selector matches elements by node name. In other words, it selects all elements of the given type within a document.</p>
+        <code>
+          /* All &lt;a&gt; elements. */<br />
+          a {<br />
+          &nbsp;color: red;<br />
+          }
+        </code>
+        <p>
+          Type selectors can be namespaced when using @namespace. This is useful when dealing with documents containing multiple namespaces such as HTML with inline SVG or MathML, or XML that mixes
+          multiple vocabularies.
+        </p>
+        <ul>
+          <li><code>ns|h1</code> - matches &lt;h1&gt; elements in namespace ns</li>
+          <li><code>*|h1</code> - matches all &lt;h1&gt; elements</li>
+          <li><code>|h1</code> - matches all &lt;h1&gt; elements without any declared namespace</li>
+        </ul>
+      </section>
+      <section class="main-section" id="Universal_selectors">
+        <header>Universal selectors</header>
+        <p>The CSS universal selector <code>(*)</code> matches elements of any type.</p>
+        <code>
+          /* Selects all elements */<br />
+          * {<br />
+          &nbsp;color: green;<br />
+          }
+        </code>
+        <p>
+          The universal selector is a special type selector and can therefore be namespaced when using @namespace. This is useful when dealing with documents containing multiple namespaces such as
+          HTML with inline SVG or MathML, or XML that mixes multiple vocabularies.
+        </p>
+        <ul>
+          <li><code>ns|*</code> - matches all elements in namespace ns</li>
+          <li><code>*|*</code> - matches all elements</li>
+          <li><code>|*</code> - matches all elements without any declared namespace</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
